@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { token } from './auth.config';
 
@@ -10,7 +10,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
     importProvidersFrom(
       JwtModule.forRoot({
         config: {
@@ -19,6 +18,9 @@ export const appConfig: ApplicationConfig = {
           disallowedRoutes: ['localhost:8080/login']
         }
       })
-    )
+    ),
+    provideHttpClient(
+      withInterceptorsFromDi()
+    ),
   ]
 };
