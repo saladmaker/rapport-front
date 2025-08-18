@@ -6,7 +6,7 @@ export const canActivateGroup: CanActivateFn = (route, state) => {
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  const requiredGroup = route.data['group'] as string;
+  const requiredGroup = route.data['groups'] as string;
 
   if (!auth.isAuthenticated || !requiredGroup) {
     return router.parseUrl('/forbidden');
