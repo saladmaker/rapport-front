@@ -26,8 +26,4 @@ export class LoginComponent {
   onForgotPassword() {
     console.log('Forgot password clicked');
   }
-
-  onCreateAccount() {
-    console.log('Create account clicked');
-  }
 }
