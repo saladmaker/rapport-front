@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { token } from './auth.config';
+import { tokenGetter } from './auth.config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       JwtModule.forRoot({
         config: {
-          tokenGetter: token,
+          tokenGetter: tokenGetter,
           headerName: 'authorization',
           allowedDomains: ['localhost:8080'],
           disallowedRoutes: ['localhost:8080/api/login']

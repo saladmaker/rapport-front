@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './menu.component.html'
 })
 export class MenuComponent {
+  
   authService = inject(AuthService);
-  isAuthenticated = computed(() => this.authService.isAuthenticated());
+  isAuthenticated = this.authService.isAuthenticated;
+
 }
